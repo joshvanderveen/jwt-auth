@@ -1,32 +1,42 @@
-# JWT Authentication Boiler Plate
+# JWT Authentication Boilerplate
 
-A JWT based authentication system boiler plate to use as an example for future projects.
+A JWT-based authentication system boilerplate to use as an example for future projects.
 
-## About
+## Overview
 
-Built using NodeJS and ExpressJS as the backend frameworks.
+This boilerplate provides a secure authentication system built using Node.js, Express.js, and TypeScript. It integrates JSON Web Tokens (JWT) for authentication and authorization. By leveraging TypeScript's strong typing and Mongoose's ORM capabilities, it offers a solid foundation for building secure authentication features in your applications.
 
-Built with Typescript to safeguard against mistakes.
+## Features
 
-Uses Mongodb with Mongoose as an ORM interface.
+- **Node.js and Express.js Backend:** Built with the robust and scalable Node.js runtime and the popular Express.js framework, ensuring efficient server-side operations.
 
-Mongoose models set up fully with Typescript interfaces to further safeguard against mistakes.
+- **TypeScript Implementation:** Developed using TypeScript, which offers static typing and helps catch errors during development, enhancing the reliability of your codebase.
 
-Configurable to customise JWT expiries and secrets.
+- **MongoDB with Mongoose:** Utilizes MongoDB as the database and employs Mongoose, an Object-Document Mapping (ODM) library, to create well-structured models and enhance data consistency.
 
-## Setup
+- **JWT Customization:** Easily configurable to set JWT expiration times and secrets, allowing you to tailor the authentication system to your application's needs.
 
-- Clone repository
-- `cd server`
-- `npm run dev`
+## Getting Started
 
-## Routes
+1. **Clone Repository:** Start by cloning this repository to your local machine.
+
+2. **Navigate to Server Directory:** Move into the `server` directory of the cloned repository.
+
+3. **Install Dependencies:** Install the required dependencies by running `npm install`.
+
+4. **Navigate to Client Directory:** Move into the `client` directory of the cloned repository.
+
+5. **Install Dependencies:** Install the required dependencies by running `npm install`.
+
+6. **Run the Server:** Launch the development server using the command `npm run dev` from the root directory of the cloned repository.
+
+## API Routes
 
 ### `/api/v1/auth/register`
 
-Registers a new user by sending a request with the body:
+Registers a new user. Send a POST request with the following JSON body:
 
-```
+```json
 {
     "username": "SomeUsername",
     "password": "SomePassword"
@@ -35,9 +45,9 @@ Registers a new user by sending a request with the body:
 
 ### `/api/v1/auth/login`
 
-Logs in an existing user by sending a request with the body:
+Logs in an existing user. Send a POST request with the following JSON body:
 
-```
+```json
 {
     "username": "SomeUsername",
     "password": "SomePassword"
@@ -46,23 +56,14 @@ Logs in an existing user by sending a request with the body:
 
 ### `/api/v1/auth/refresh`
 
-Endpoint to get a new token once it's expired. Sent with the body:
+Refreshes an expired token. Send a POST request with the following JSON body:
 
-```
+```json
 {
-    "token": "RefreshToken",
+    "token": "RefreshToken"
 }
 ```
 
 ### `/api/v1/test`
 
-Protected endpoint, queried with the header:
-
-```
-x-auth-token: "Token"
-```
-
-## Future additions
-
-- Add more role based authorisation
-- Create seperate role entity to add flexibility to permissions
+A protected endpoint that requires a valid token. Include the token in the `x-auth-token` header.
